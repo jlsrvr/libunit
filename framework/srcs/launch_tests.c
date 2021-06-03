@@ -1,9 +1,9 @@
 #include "libunit.h"
 
-static int exec_test(int (*test)(void))
+static int	exec_test(int (*test)(void))
 {
-	int status;
-	pid_t pid;
+	int		status;
+	pid_t	pid;
 
 	pid = fork();
 	if (pid == -1)
@@ -22,11 +22,14 @@ static int exec_test(int (*test)(void))
 	return (UNKNOWN);
 }
 
-static void print_result(int code)
+static void	print_result(int code)
 {
-	int codes[9] = {SUCCESS, FAILURE, FORK, UNKNOWN, SIGBUS, SIGABRT, SIGSEGV, SIGALRM, SIGFPE};
-	char strings[][22] = {"\e[32m[OK]", "\e[31m[KO]", "\e[31mFramework failure", "\e[31m[Crash]", "\e[31m[BUSE]", "\e[31m[SIGA]", "\e[31m[SEGV]", "\e[31m[TIMEOUT]", "\e[31m[FPE]"};
-	int index;
+	int		codes[9] = {SUCCESS, FAILURE, FORK, UNKNOWN,
+					SIGBUS, SIGABRT, SIGSEGV, SIGALRM, SIGFPE};
+	char	strings[][22] = {"\e[32m[OK]", "\e[31m[KO]", "\e[31mFramework failure",
+				"\e[31m[Crash]", "\e[31m[BUSE]", "\e[31m[SIGA]",
+				"\e[31m[SEGV]", "\e[31m[TIMEOUT]", "\e[31m[FPE]"};
+	int		index;
 
 	index = 0;
 	while (index < 9 && code != codes[index])
@@ -36,10 +39,10 @@ static void print_result(int code)
 
 int	launch_tests(t_unit_lst **lst)
 {
-	int	test_count;
-	int	passed;
-	int ret;
-	t_unit_lst *test_elem;
+	int			test_count;
+	int			passed;
+	int			ret;
+	t_unit_lst	*test_elem;
 
 	if (!lst || !*lst)
 		return (-1);
@@ -49,7 +52,8 @@ int	launch_tests(t_unit_lst **lst)
 	while (test_elem)
 	{
 		test_count++;
-		printf("\n    >%-*.*s : ", DISPLAY_SIZE, DISPLAY_SIZE, test_elem->describe);
+		printf("\n    >%-*.*s : ", DISPLAY_SIZE,
+			DISPLAY_SIZE, test_elem->describe);
 		fflush(stdout);
 		ret = exec_test(test_elem->test);
 		if (ret == 0)

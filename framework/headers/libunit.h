@@ -26,9 +26,9 @@
 
 typedef struct s_unit_lst
 {
-	char *describe;
-	int (*test)(void);
-	struct s_unit_lst *next;
+	char				*describe;
+	int					(*test)(void);
+	struct s_unit_lst	*next;
 }	t_unit_lst;
 
 void	clean_tests(t_unit_lst **lst);

@@ -2,7 +2,7 @@
 
 static t_unit_lst	*new_test(char *describe, int (*func)(void))
 {
-	t_unit_lst *elem;
+	t_unit_lst	*elem;
 
 	elem = malloc(sizeof(*elem));
 	if (!elem)
@@ -13,9 +13,9 @@ static t_unit_lst	*new_test(char *describe, int (*func)(void))
 	return (elem);
 }
 
-static void add_test_to_end(t_unit_lst **lst, t_unit_lst *new)
+static void	add_test_to_end(t_unit_lst **lst, t_unit_lst *new)
 {
-	t_unit_lst *temp;
+	t_unit_lst	*temp;
 
 	temp = *lst;
 	if (!*lst)
@@ -30,7 +30,7 @@ static void add_test_to_end(t_unit_lst **lst, t_unit_lst *new)
 
 void	load_test(t_unit_lst **lst, char *describe, int (*test)(void))
 {
-	t_unit_lst *new;
+	t_unit_lst	*new;
 
 	new = new_test(describe, test);
 	if (!new)
