@@ -2,5 +2,5 @@
 
 int KO_test(void)
 {
-	return (-1);
+	return (1);
 }

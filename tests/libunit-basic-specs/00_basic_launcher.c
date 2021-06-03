@@ -2,7 +2,7 @@
 
 int		basic_launcher(void)
 {
-	t_unit_test	*testlist;
+	t_unit_lst	*testlist;
 
 	testlist = NULL;
 	printf("Basic Tests: ");

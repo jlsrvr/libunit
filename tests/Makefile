@@ -29,12 +29,11 @@ all:		$(NAME)
 
 $(NAME):	make_lib_unit $(OBJS)
 			$(CC) $(FLAGS) -o $(NAME) $(OBJS) $(LIBS)
-			echo ".gitignore" > .gitignore
-			echo "minilibx-linux/test/mlx-test" >> .gitignore
-			echo $(NAME) >> .gitignore
-			find -type f -name "*.o" >> .gitignore
-			find -type f -name "*.a" >> .gitignore
-			sed -i -E 's/^\.\///' .gitignore
+			@echo ".gitignore" >> .gitignore
+			@echo $(NAME) >> .gitignore
+			@find . -type f -name "*.o" >> .gitignore
+			@find . -type f -name "*.a" >> .gitignore
+			@sed -i '' -E 's/^\.\///' .gitignore
 
 make_lib:
 	@make libft.a -C ./libft/
@@ -44,12 +43,10 @@ make_lib_unit:
 
 clean:
 	$(RM) $(OBJS)
-	@make clean -C ./libft/
 	@make clean -C ./../framework/
 
 fclean: 	clean
 	$(RM) $(NAME)
-	@make fclean -C ./libft/
 	@make clean -C ./../framework/
 
 re:			fclean all
