@@ -2,9 +2,9 @@ NAME		=	libunit_tests
 
 CC			=	gcc
 
-IDIR		=	-I./headers -I./../libunit/headers
+IDIR		=	-I./headers -I./../framework/headers
 
-LIBS		=	-L./../libunit -lunit
+LIBS		=	-L./../framework -lunit
 
 OBJS		=	$(SRC:.c=.o)
 
@@ -40,17 +40,17 @@ make_lib:
 	@make libft.a -C ./libft/
 
 make_lib_unit:
-	@make -C ./../libunit/
+	@make -C ./../framework/
 
 clean:
 	$(RM) $(OBJS)
 	@make clean -C ./libft/
-	@make clean -C ./../libunit/
+	@make clean -C ./../framework/
 
 fclean: 	clean
 	$(RM) $(NAME)
 	@make fclean -C ./libft/
-	@make clean -C ./../libunit/
+	@make clean -C ./../framework/
 
 re:			fclean all
 
