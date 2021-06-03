@@ -6,7 +6,7 @@
 #    By: jrivoire <jrivoire@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/15 15:24:55 by jrivoire          #+#    #+#              #
-#    Updated: 2021/06/03 15:31:03 by jrivoire         ###   ########.fr        #
+#    Updated: 2021/06/03 19:58:26 by jrivoire         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,12 @@ FLAGS			=	-Wall -Wextra -Werror
 	$(CC) $(FLAGS) -I$(IDIR) -c $< -o $(<:.c=.o)
 
 $(NAME):	$(OBJS)
-	ar rcs $(NAME) $(OBJS)
+			ar rcs $(NAME) $(OBJS)
+			@echo ".gitignore" >> .gitignore
+			@echo $(NAME) >> .gitignore
+			@find . -type f -name "*.o" >> .gitignore
+			@find . -type f -name "*.a" >> .gitignore
+			@sed -i '' -E 's/^\.\///' .gitignore
 
 all:		$(NAME)
 

@@ -24,7 +24,7 @@ static void add_test_to_end(t_unit_lst **lst, t_unit_lst *new)
 		return ;
 	}
 	while (temp->next)
-		temp = temp_next;
+		temp = temp->next;
 	temp->next = new;
 }
 
