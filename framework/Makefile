@@ -6,7 +6,7 @@
 #    By: jrivoire <jrivoire@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/15 15:24:55 by jrivoire          #+#    #+#              #
-#    Updated: 2021/06/03 19:58:26 by jrivoire         ###   ########.fr        #
+#    Updated: 2021/06/04 16:52:52 by jrivoire         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,6 +21,8 @@ IDIR			=	headers/
 SRCS			= 	srcs/load_test.c \
 					srcs/launch_tests.c \
 					srcs/clean_tests.c \
+					srcs/load_suite.c \
+					srcs/run_suites.c \
 
 RM				=	rm -f
 

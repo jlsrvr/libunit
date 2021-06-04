@@ -7,6 +7,7 @@
 # include <unistd.h>
 # include <stdio.h>
 # include <stdlib.h>
+# include <string.h>
 
 # define RED	"\e[31m"
 # define GREEN	"\e[32m"
@@ -31,7 +32,15 @@ typedef struct s_unit_lst
 	struct s_unit_lst	*next;
 }	t_unit_lst;
 
+typedef struct s_suite_lst
+{
+	int					(*suite)(void);
+	struct s_suite_lst	*next;
+}	t_suite_lst;
+
 void	clean_tests(t_unit_lst **lst);
 int		launch_tests(t_unit_lst **lst);
 void	load_test(t_unit_lst **lst, char *describe, int (*test)(void));
+void	load_suite(t_suite_lst **lst, int (*suite)(void));
+int		run_suites(t_suite_lst **suites, char *title);
 #endif
