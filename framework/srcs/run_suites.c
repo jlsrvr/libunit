@@ -1,9 +1,9 @@
 #include "libunit.h"
 
-static void print_header(char *title)
+static void	print_header(char *title)
 {
 	int	index;
-	int len;
+	int	len;
 
 	len = 0;
 	index = -1;
@@ -19,7 +19,7 @@ static void print_header(char *title)
 	printf("\n");
 }
 
-static int print_result(int total, int passed)
+static int	print_result(int total, int passed)
 {
 	if (total == passed)
 	{
@@ -30,11 +30,11 @@ static int print_result(int total, int passed)
 	return (1);
 }
 
-int run_suites(t_suite_lst **suites, char *title)
+int	run_suites(t_suite_lst **suites, char *title)
 {
-	int pass_count;
-	int suite_count;
-	t_suite_lst *temp;
+	int			pass_count;
+	int			suite_count;
+	t_suite_lst	*temp;
 
 	print_header(title);
 	temp = *suites;
