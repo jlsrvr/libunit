@@ -62,6 +62,6 @@ int	launch_tests(t_unit_lst **lst)
 		test_elem = test_elem->next;
 	}
 	clean_tests(lst);
-	printf("\t%d success out of %d tests\n", passed, test_count);
+	printf("\n\t%d/%d tests passed\n", passed, test_count);
 	return (passed == test_count);
 }
