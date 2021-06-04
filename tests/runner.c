@@ -2,17 +2,9 @@
 
 int main(void)
 {
-	int pass;
-	printf("******************************************\n");
-	printf("***       Unit Tests for libunit       ***\n");
-	printf("******************************************\n");
+	t_suite_lst *suites;
 
-	pass = basic_launcher();
-	if (pass)
-	{
-		printf("all good");
-		return (1);
-	}
-	printf("No good");
-	return (0);
+	suites = NULL;
+	load_suite(&suites, &basic_launcher);
+	return (run_suites(&suites, "Libunit"));
 }
