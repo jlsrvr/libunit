@@ -19,6 +19,8 @@ SRC 		=	runner.c \
 				libunit-basic-specs/07_sigabort_test.c \
 				libunit-params-tests/00_params_launcher.c \
 				libunit-params-tests/01_params_test.c \
+				libunit-params-tests/02_struct_test.c \
+				libunit-params-tests/03_struct_segfault_test.c \
 
 RM			=	rm -f
 
@@ -36,7 +38,6 @@ $(NAME):	make_lib_unit $(OBJS)
 			@find . -type f -name "*.o" >> .gitignore
 			@find . -type f -name "*.a" >> .gitignore
 			@sed -i '' -E 's/^\.\///' .gitignore
-			./$(NAME)
 
 make_lib:
 	@make libft.a -C ./libft/
