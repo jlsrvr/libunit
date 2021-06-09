@@ -1,7 +1,8 @@
 #include "tests.h"
 
-int fpe_test(void)
+int fpe_test(void *params)
 {
+	(void)params;
 	int a = 1;
 	int result;
 

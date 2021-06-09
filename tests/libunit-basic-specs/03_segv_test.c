@@ -1,7 +1,8 @@
 #include "tests.h"
 
-int segv_test(void)
+int segv_test(void *params)
 {
+	(void)params;
 	char *ptr;
 
 	ptr = NULL;
