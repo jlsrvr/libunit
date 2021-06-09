@@ -3,9 +3,10 @@
 int		basic_launcher(void)
 {
 	t_unit_lst	*testlist;
+	char *title;
 
 	testlist = NULL;
-	printf("Basic Tests: ");
+	title = "Basic Tests";
 	load_test(&testlist, "OK", &OK_test);
 	load_test(&testlist, "KO", &KO_test);
 	load_test(&testlist, "Segfault", &segv_test);
@@ -13,5 +14,5 @@ int		basic_launcher(void)
 	load_test(&testlist, "Floating Point Error", &fpe_test);
 	load_test(&testlist, "Bus Error", &bus_test);
 	load_test(&testlist, "SigAbort", &sigabort_test);
-	return (launch_tests(&testlist));
+	return (launch_tests(&testlist, title));
 }
