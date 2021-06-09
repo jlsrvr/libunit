@@ -63,6 +63,6 @@ int	launch_tests(t_unit_lst **lst, char *title)
 		test_elem = test_elem->next;
 	}
 	clean_tests(lst);
-	printf(CYAN"\n\t%d/%d tests passed\n", passed, test_count);
+	printf(PINK"\n\t%d/%d tests passed\n", passed, test_count);
 	return (passed == test_count);
 }
