@@ -1,6 +1,7 @@
 #include "tests.h"
 
-int KO_test(void)
+int KO_test(void *ptr)
 {
+	(void)ptr;
 	return (1);
 }

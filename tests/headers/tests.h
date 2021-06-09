@@ -5,11 +5,14 @@
 # include "stdio.h"
 
 int basic_launcher(void);
-int OK_test(void);
-int KO_test(void);
-int segv_test(void);
-int timeout_test(void);
-int fpe_test(void);
-int bus_test(void);
-int sigabort_test(void);
+int OK_test(void *params);
+int KO_test(void *params);
+int segv_test(void *params);
+int timeout_test(void *params);
+int fpe_test(void *params);
+int bus_test(void *params);
+int sigabort_test(void *params);
+
+int params_launcher(void);
+int one_params_test(void *value);
 #endif
