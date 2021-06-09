@@ -4,6 +4,13 @@
 # include "unistd.h"
 # include "stdio.h"
 
+typedef struct s_test
+{
+	int one;
+	char two;
+	char *three;
+} t_test;
+
 int basic_launcher(void);
 int OK_test(void *params);
 int KO_test(void *params);
@@ -15,4 +22,6 @@ int sigabort_test(void *params);
 
 int params_launcher(void);
 int one_params_test(void *value);
+int struct_params_test(void *params);
+int struct_segfault_test(void *params);
 #endif
