@@ -37,7 +37,7 @@ static void	print_result(int code)
 	printf("%s"RESET, strings[index]);
 }
 
-int	launch_tests(t_unit_lst **lst)
+int	launch_tests(t_unit_lst **lst, char *title)
 {
 	int			test_count;
 	int			passed;
@@ -49,6 +49,7 @@ int	launch_tests(t_unit_lst **lst)
 	test_count = 0;
 	passed = 0;
 	test_elem = *lst;
+	printf(CYAN UNDER"%s:"RESET, title);
 	while (test_elem)
 	{
 		test_count++;
@@ -62,6 +63,6 @@ int	launch_tests(t_unit_lst **lst)
 		test_elem = test_elem->next;
 	}
 	clean_tests(lst);
-	printf("\n\t%d/%d tests passed\n", passed, test_count);
+	printf(CYAN"\n\t%d/%d tests passed\n", passed, test_count);
 	return (passed == test_count);
 }

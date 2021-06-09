@@ -1,5 +1,15 @@
 #include "libunit.h"
 
+static void pass(void)
+{
+	printf(GREEN"\n *******      **        ********    ********\n/**////**    ****      **//////    **////// \n/**   /**   **//**    /**         /**       \n/*******   **  //**   /*********  /*********\n/**////   **********  ////////**  ////////**\n/**      /**//////**         /**         /**\n/**      /**     /**   ********    ******** \n//       //      //   ////////    //////// \n"RESET);
+}
+
+static void fail(void)
+{
+	printf(RED "\n ********     **         **     **      \n/**/////     ****       /**    /**      \n/**         **//**      /**    /**      \n/*******   **  //**     /**    /**      \n/**////   **********    /**    /**      \n/**      /**//////**    /**    /**      \n/**      /**     /**    /**    /********\n//       //      //     //     ////////\n");
+}
+
 static void	print_header(char *title)
 {
 	int	index;
@@ -23,10 +33,10 @@ static int	print_result(int total, int passed)
 {
 	if (total == passed)
 	{
-		printf(GREEN BLINK"\tAll Passed!\n"RESET);
+		pass();
 		return (0);
 	}
-	printf(RED BOLD"\tSomething Failed\n"RESET);
+	fail();
 	return (1);
 }
 

@@ -39,7 +39,7 @@ typedef struct s_suite_lst
 }	t_suite_lst;
 
 void	clean_tests(t_unit_lst **lst);
-int		launch_tests(t_unit_lst **lst);
+int		launch_tests(t_unit_lst **lst, char *title);
 void	load_test(t_unit_lst **lst, char *describe, int (*test)(void));
 void	load_suite(t_suite_lst **lst, int (*suite)(void));
 int		run_suites(t_suite_lst **suites, char *title);
