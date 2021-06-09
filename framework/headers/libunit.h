@@ -28,7 +28,8 @@
 typedef struct s_unit_lst
 {
 	char				*describe;
-	int					(*test)(void);
+	int					(*test)(void*);
+	void				*params;
 	struct s_unit_lst	*next;
 }	t_unit_lst;
 
@@ -38,9 +39,10 @@ typedef struct s_suite_lst
 	struct s_suite_lst	*next;
 }	t_suite_lst;
 
+void    add_test_to_end(t_unit_lst **lst, t_unit_lst *new);
 void	clean_tests(t_unit_lst **lst);
 int		launch_tests(t_unit_lst **lst, char *title);
-void	load_test(t_unit_lst **lst, char *describe, int (*test)(void));
+void	load_test(t_unit_lst **lst, char *describe, int (*test)(void*), void *params);
 void	load_suite(t_suite_lst **lst, int (*suite)(void));
 int		run_suites(t_suite_lst **suites, char *title);
 #endif

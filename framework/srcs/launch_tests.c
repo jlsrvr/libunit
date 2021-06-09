@@ -1,6 +1,6 @@
 #include "libunit.h"
 
-static int	exec_test(int (*test)(void))
+static int	exec_test(t_unit_lst *test)
 {
 	int		status;
 	pid_t	pid;
@@ -12,7 +12,7 @@ static int	exec_test(int (*test)(void))
 	if (pid == 0)
 	{
 		alarm(TIME_LIMIT);
-		exit(test());
+		exit(test->test(test->params));
 	}
 	wait(&status);
 	if (WIFEXITED(status))
@@ -56,7 +56,7 @@ int	launch_tests(t_unit_lst **lst, char *title)
 		printf("\n    >%-*.*s : ", DISPLAY_SIZE,
 			DISPLAY_SIZE, test_elem->describe);
 		fflush(stdout);
-		ret = exec_test(test_elem->test);
+		ret = exec_test(test_elem);
 		if (ret == 0)
 			passed++;
 		print_result(ret);
