@@ -21,6 +21,8 @@ SRC 		=	runner.c \
 				libunit-params-tests/01_params_test.c \
 				libunit-params-tests/02_struct_test.c \
 				libunit-params-tests/03_struct_segfault_test.c \
+				libunit-output-tests/00_output_launcher.c \
+				libunit-output-tests/01_output_test.c \
 
 RM			=	rm -f
 
@@ -33,7 +35,9 @@ all:		$(NAME)
 
 $(NAME):	make_lib_unit $(OBJS)
 			$(CC) $(FLAGS) -o $(NAME) $(OBJS) $(LIBS)
-			@echo ".gitignore" >> .gitignore
+			@echo ".gitignore" > .gitignore
+			@mkdir outputs
+			@echo "outputs/" >> .gitignore
 			@echo $(NAME) >> .gitignore
 			@find . -type f -name "*.o" >> .gitignore
 			@find . -type f -name "*.a" >> .gitignore
