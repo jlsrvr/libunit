@@ -6,7 +6,7 @@
 #    By: jrivoire <jrivoire@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/15 15:24:55 by jrivoire          #+#    #+#              #
-#    Updated: 2021/06/10 14:16:35 by jrivoire         ###   ########.fr        #
+#    Updated: 2021/06/10 18:02:37 by jrivoire         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,6 +25,7 @@ SRCS			= 	srcs/load_test.c \
 					srcs/load_suite.c \
 					srcs/run_suites.c \
 					srcs/redirector.c \
+					srcs/file_diff.c \
 
 RM				=	rm -f
 
