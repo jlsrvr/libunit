@@ -16,7 +16,7 @@ static t_fd *redirect_output(char *filepath, FILE *og_output)
 	if (!my_fd)
 		return (NULL);
 	my_fd->og_output = og_output;
-   	my_fd->file_fd = open(filepath, O_RDWR|O_CREAT|O_APPEND, 0600);
+	my_fd->file_fd = open(filepath, O_RDWR|O_CREAT|O_TRUNC, 0600);
     if (my_fd->file_fd == -1)
 		return (clean_fail(my_fd));
     my_fd->copy_og = dup(fileno(og_output));
