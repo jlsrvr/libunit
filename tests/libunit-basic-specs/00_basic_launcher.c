@@ -12,7 +12,7 @@ int		basic_launcher(void)
 	load_test(&testlist, "Segfault", &segv_test, NULL);
 	load_test(&testlist, "Timeout", &timeout_test, NULL);
 	load_test(&testlist, "Floating Point Error", &fpe_test, NULL);
-	load_test(&testlist, "Bus Error", &bus_test, NULL);
 	load_test(&testlist, "SigAbort", &sigabort_test, NULL);
+	load_test(&testlist, "Bus Error", &bus_test, NULL);
 	return (launch_tests(&testlist, title));
 }
