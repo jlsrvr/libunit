@@ -8,6 +8,7 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <string.h>
+# include <fcntl.h>
 
 # define RED	"\e[31m"
 # define GREEN	"\e[32m"
@@ -24,6 +25,13 @@
 # define FAILURE 1
 # define UNKNOWN 0x42000000
 # define FORK 0x42000001
+
+typedef struct s_fd
+{
+	int file_fd;
+	int copy_og;
+	FILE *og_output;
+}	t_fd;
 
 typedef struct s_unit_lst
 {
@@ -45,4 +53,8 @@ int		launch_tests(t_unit_lst **lst, char *title);
 void	load_test(t_unit_lst **lst, char *describe, int (*test)(void*), void *params);
 void	load_suite(t_suite_lst **lst, int (*suite)(void));
 int		run_suites(t_suite_lst **suites, char *title);
+
+t_fd    *redirect_stdout(char *filepath);
+t_fd    *redirect_stderr(char *filepath);
+void	reverse_redirect(t_fd *my_fd);
 #endif
