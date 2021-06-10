@@ -24,4 +24,7 @@ int params_launcher(void);
 int one_params_test(void *value);
 int struct_params_test(void *params);
 int struct_segfault_test(void *params);
+
+int output_launcher(void);
+int pass_output_test(void *value);
 #endif
