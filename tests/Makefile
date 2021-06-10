@@ -36,7 +36,7 @@ all:		$(NAME)
 $(NAME):	make_lib_unit $(OBJS)
 			$(CC) $(FLAGS) -o $(NAME) $(OBJS) $(LIBS)
 			@echo ".gitignore" > .gitignore
-			@mkdir outputs
+			@mkdir -p outputs
 			@echo "outputs/" >> .gitignore
 			@echo $(NAME) >> .gitignore
 			@find . -type f -name "*.o" >> .gitignore
