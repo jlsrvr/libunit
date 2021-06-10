@@ -23,6 +23,7 @@ SRC 		=	runner.c \
 				libunit-params-tests/03_struct_segfault_test.c \
 				libunit-output-tests/00_output_launcher.c \
 				libunit-output-tests/01_output_test.c \
+				libunit-output-tests/02_diff_test.c \
 
 RM			=	rm -f
 

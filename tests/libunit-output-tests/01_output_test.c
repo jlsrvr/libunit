@@ -11,7 +11,7 @@ int pass_output_test(void *value)
 	int ret;
 	t_fd *std_out;
 
-	std_out = redirect_stdout("toto.log");
+	std_out = redirect_stdout("outputs/first_redirect.log");
 	ret = dummy_function("This should not appear");
 	reverse_redirect(std_out);
 	if (ret > 0)
