@@ -1,6 +1,6 @@
 NAME			=	libunit.a
 
-CC				=	gcc
+CC				=	clang
 
 OBJS			=	$(SRCS:.c=.o)
 

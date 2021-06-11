@@ -1,6 +1,6 @@
 NAME		=	libunit_tests
 
-CC			=	gcc
+CC			=	clang
 
 IDIR		=	-I./headers -I./../framework/headers
 
