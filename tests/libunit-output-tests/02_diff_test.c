@@ -18,5 +18,5 @@ int diff_test(void *p)
 	FILE *ptr = fopen("outputs/expected.log", "w");
 	fprintf(ptr, "%s", exp);
 	fclose(ptr);
-	return (file_diff("outputs/diff_test.log", "outputs/expected.log"));
+	return (file_diff("outputs/diff_test.log", "outputs/expected.log", 0));
 }
