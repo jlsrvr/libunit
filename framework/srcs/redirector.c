@@ -29,6 +29,8 @@ static t_fd *redirect_output(char *filepath, FILE *og_output)
 
 void reverse_redirect(t_fd *my_fd)
 {
+	if (!my_fd)
+		return ;
     fflush(my_fd->og_output);
 	close(my_fd->file_fd);
     dup2(my_fd->copy_og, fileno(my_fd->og_output));
