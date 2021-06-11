@@ -28,4 +28,6 @@ int struct_segfault_test(void *params);
 int output_launcher(void);
 int pass_output_test(void *value);
 int diff_test(void *value);
+int diff_display_fail_test(void *value);
+int diff_display_pass_test(void *value);
 #endif
