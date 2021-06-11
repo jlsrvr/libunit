@@ -30,6 +30,12 @@ RM			=	rm -f
 
 FLAGS		=	-Wall -Wextra -Werror
 
+ifeq ($(shell uname),Darwin)
+	SED = @sed -i '' -E 's/^\.\///' .gitignore
+else
+	SED = @sed -i -E 's/^\.\///' .gitignore
+endif
+
 .c.o:
 	$(CC) $(FLAGS) $(IDIR) -c $< -o $(<:.c=.o)
 
@@ -43,7 +49,7 @@ $(NAME):	make_lib_unit $(OBJS)
 			@echo $(NAME) >> .gitignore
 			@find . -type f -name "*.o" >> .gitignore
 			@find . -type f -name "*.a" >> .gitignore
-			@sed -i -E 's/^\.\///' .gitignore
+			@$(SED)
 
 make_lib:
 	@make libft.a -C ./libft/
