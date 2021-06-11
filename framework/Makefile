@@ -29,7 +29,7 @@ $(NAME):	$(OBJS)
 			@echo $(NAME) >> .gitignore
 			@find . -type f -name "*.o" >> .gitignore
 			@find . -type f -name "*.a" >> .gitignore
-			@sed -i '' -E 's/^\.\///' .gitignore
+			@sed -i -E 's/^\.\///' .gitignore
 
 all:		$(NAME)
 

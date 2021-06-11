@@ -43,7 +43,7 @@ $(NAME):	make_lib_unit $(OBJS)
 			@echo $(NAME) >> .gitignore
 			@find . -type f -name "*.o" >> .gitignore
 			@find . -type f -name "*.a" >> .gitignore
-			@sed -i '' -E 's/^\.\///' .gitignore
+			@sed -i -E 's/^\.\///' .gitignore
 
 make_lib:
 	@make libft.a -C ./libft/
