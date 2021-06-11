@@ -20,6 +20,12 @@ RM				=	rm -f
 
 FLAGS			=	-Wall -Wextra -Werror
 
+ifeq ($(shell uname),Darwin)
+	SED = @sed -i '' -E 's/^\.\///' .gitignore
+else
+	SED = @sed -i -E 's/^\.\///' .gitignore
+endif
+
 .c.o:
 	$(CC) $(FLAGS) -I$(IDIR) -c $< -o $(<:.c=.o)
 
@@ -29,7 +35,7 @@ $(NAME):	$(OBJS)
 			@echo $(NAME) >> .gitignore
 			@find . -type f -name "*.o" >> .gitignore
 			@find . -type f -name "*.a" >> .gitignore
-			@sed -i -E 's/^\.\///' .gitignore
+			@$(SED)
 
 all:		$(NAME)
 
