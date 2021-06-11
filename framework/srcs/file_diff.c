@@ -1,9 +1,10 @@
 #include "libunit.h"
 
-static void	close_files(FILE *ptr1, FILE *ptr2)
+static int	close_files(FILE *ptr1, FILE *ptr2)
 {
 	fclose(ptr1);
 	fclose(ptr2);
+	return (1);
 }
 
 static void	add_line(t_line **line_lst, int line_no)
@@ -68,7 +69,7 @@ static void	print_line(int line_no, int *actual_no,
 	free(line);
 }
 
-static void	print_diff(t_line **line_lst, char *file_exp, char *file_got)
+static int	print_diff(t_line **line_lst, char *file_exp, char *file_got, int print)
 {
 	t_line	*temp;
 	t_line	*prev;
@@ -76,8 +77,8 @@ static void	print_diff(t_line **line_lst, char *file_exp, char *file_got)
 	FILE	*ptr_got;
 	int		actual_line[2];
 
-	if (open_files(file_exp, file_got, &ptr_exp, &ptr_got))
-		return ;
+	if (!print || open_files(file_exp, file_got, &ptr_exp, &ptr_got))
+		return (1);
 	temp = *line_lst;
 	printf("\nDiff exp-%s got-%s\n", file_exp, file_got);
 	printf("--- exp-%s\n+++ got-%s\n", file_exp, file_got);
@@ -93,22 +94,19 @@ static void	print_diff(t_line **line_lst, char *file_exp, char *file_got)
 		free(prev);
 	}
 	close_files(ptr_exp, ptr_got);
+	return (1);
 }
 
 int	file_diff(char *file_exp, char *file_got, int print)
 {
 	FILE	*ptr_exp;
 	FILE	*ptr_got;
-	char	comp[2];
-	t_line	*line_lst;
-	int		line_no;
+	char	comp[2] = "12";
+	t_line	*line_lst = NULL;
+	int		line_no = 1;
 
-	line_lst = NULL;
 	if (open_files(file_exp, file_got, &ptr_exp, &ptr_got))
 		return (1);
-	line_no = 1;
-	comp[0] = '1';
-	comp[1] = '2';
 	while (comp[0] != EOF && comp[1] != EOF)
 	{
 		comp[0] = fgetc(ptr_exp);
@@ -118,17 +116,12 @@ int	file_diff(char *file_exp, char *file_got, int print)
 		if (comp[0] != comp[1])
 		{
 			if (!print)
-			{
-				close_files(ptr_exp, ptr_got);
-				return (1);
-			}
+				return (close_files(ptr_exp, ptr_got));
 			add_line(&line_lst, line_no);
 		}
 	}
 	close_files(ptr_exp, ptr_got);
 	if (comp[0] == EOF && comp[1] == EOF && !line_lst)
 		return (0);
-	if (print)
-		print_diff(&line_lst, file_exp, file_got);
-	return (1);
+	return (print_diff(&line_lst, file_exp, file_got, print));
 }
