@@ -39,15 +39,13 @@ static void	print_result(int code)
 
 int	launch_tests(t_unit_lst **lst, char *title)
 {
-	int			test_count;
-	int			passed;
+	int			test_count = 0;
+	int			passed = 0;
 	int			ret;
 	t_unit_lst	*test_elem;
 
 	if (!lst || !*lst)
 		return (-1);
-	test_count = 0;
-	passed = 0;
 	test_elem = *lst;
 	printf(CYAN UNDER"%s:"RESET, title);
 	while (test_elem)
