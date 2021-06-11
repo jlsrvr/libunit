@@ -65,6 +65,5 @@ t_fd    *redirect_stdout(char *filepath);
 t_fd    *redirect_stderr(char *filepath);
 void	reverse_redirect(t_fd *my_fd);
 
-int		file_diff(char *filepath1, char *filepath2);
-int		file_diff_print(char *filepath1, char *filepath2);
+int		file_diff(char *filepath1, char *filepath2, int print);
 #endif
