@@ -14,6 +14,7 @@ SRCS			= 	srcs/load_test.c \
 					srcs/run_suites.c \
 					srcs/redirector.c \
 					srcs/file_diff.c \
+					srcs/get_next_line.c \
 
 RM				=	rm -f
 

@@ -9,6 +9,7 @@
 # include <stdlib.h>
 # include <string.h>
 # include <fcntl.h>
+# include "get_next_line.h"
 
 # define RED	"\e[31m"
 # define GREEN	"\e[32m"
@@ -25,6 +26,12 @@
 # define FAILURE 1
 # define UNKNOWN 0x42000000
 # define FORK 0x42000001
+
+typedef struct s_line
+{
+	int line_no;
+	struct s_line *next;
+}	t_line;
 
 typedef struct s_fd
 {
@@ -59,4 +66,5 @@ t_fd    *redirect_stderr(char *filepath);
 void	reverse_redirect(t_fd *my_fd);
 
 int		file_diff(char *filepath1, char *filepath2);
+int		file_diff_print(char *filepath1, char *filepath2);
 #endif
