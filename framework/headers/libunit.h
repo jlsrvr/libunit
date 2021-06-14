@@ -21,7 +21,7 @@
 # define BLINK	"\e[5m"
 # define RESET  "\e[0m"
 
-# define DISPLAY_SIZE 30
+# define DISPLAY_SIZE 40
 # define TIME_LIMIT 2
 # define SUCCESS 0
 # define FAILURE 1
