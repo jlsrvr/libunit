@@ -8,5 +8,6 @@ int main(void)
 	load_suite(&suites, &basic_launcher);
 	load_suite(&suites, &params_launcher);
 	load_suite(&suites, &output_launcher);
-	return (run_suites(&suites, "Libunit"));
+	run_suites(&suites, "Libunit");
+	return (0);
 }

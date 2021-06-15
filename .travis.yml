@@ -1,6 +1,6 @@
 os: osx
 
-before-script:
+before_script:
     - make re -C ./tests/
 
 script:
