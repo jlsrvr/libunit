@@ -1,0 +1,7 @@
+os: osx
+
+before-script:
+    - make re -C ./tests/
+
+script:
+    - ./tests/libunit_tests
