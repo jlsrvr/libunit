@@ -3,42 +3,18 @@ version: 2.1
 # Use a package of configuration called an orb.
 # Orchestrate or schedule a set of jobs
 jobs:
-  build-for-macoc:
-    macos:
-      xcode: "11.3.0"
+  test-for-macos:
     steps:
       - checkout
-      - run: make -C ./tests/
-
-  build-for-linux:
-    machine:
-      resource_class: gpu.nvidia.small
-      image: ubuntu-1604-cuda-10.1:201909-23
-    steps:
-      - run: nvidia-smi
-      - run: docker run --gpus all nvidia/cuda:9.0-base nvidia-smi
-
-    docker:
-      - image: cimg/node:14.10.1
-        auth:
-          username: mydockerhub-user
-          password: $DOCKERHUB_PASSWORD
-    steps:
-      - checkout
-      - run: g++ src/night.cpp
-
-  build-for-windows:
-    executor:
-      name: win/default
-      size: "medium"
-
-    steps:
-      - checkout
-      - run: g++ src/night.cpp
+      - run:
+          name: Make tests
+          command: make re -C ./tests/
+      - run:
+          name: Run tests
+          command: ./tests/libunit_tests
 
 workflows:
   version: 2.1
-  build:
+  test:
     jobs:
-      -build-for-linux
-      - build-for-windows
+      - test-for-macos
