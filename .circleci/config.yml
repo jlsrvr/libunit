@@ -4,6 +4,8 @@ version: 2.1
 # Orchestrate or schedule a set of jobs
 jobs:
   test-for-macos:
+    docker:
+      - image: cimg/base:2021.04
     steps:
       - checkout
       - run:
