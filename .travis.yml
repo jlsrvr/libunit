@@ -8,7 +8,8 @@ compiler:
   - clang
 
 before_script:
-    - make re -C ./tests/
+    - cd ./tests
+    - make re
 
 script:
-    - ./tests/libunit_tests
+    - ./libunit_tests
