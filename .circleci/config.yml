@@ -2,6 +2,9 @@
 version: 2.1
 # Use a package of configuration called an orb.
 # Orchestrate or schedule a set of jobs
+dependencies:
+  pre:
+    - sudo apt-get update; sudo apt-get remove clang; sudo apt-get install clang-11.0 libclang-common-11.0-dev
 jobs:
   test-for-macos:
     docker:
