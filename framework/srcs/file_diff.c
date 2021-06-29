@@ -97,6 +97,32 @@ static int	print_diff(t_line **line_lst, char *file_exp, char *file_got, int pri
 	return (FAILURE);
 }
 
+static void	move_file_pointer(FILE *file, char *letter)
+{
+	while (*letter != EOF && *letter != '\n')
+		*letter = fgetc(file);
+}
+
+static void	place_at_line_start(FILE *ptr_exp, FILE *ptr_got, char *exp, char *got)
+{
+	char	*letter;
+	FILE	*file;
+
+	if (*exp == *got)
+		return ;
+	if (*exp == '\n')
+	{
+		letter = got;
+		file = ptr_got;
+	}
+	else
+	{
+		letter = exp;
+		file = ptr_exp;
+	}
+	move_file_pointer(file, letter);
+}
+
 int	file_diff(char *file_exp, char *file_got, int print)
 {
 	FILE	*ptr_exp;
@@ -117,8 +143,11 @@ int	file_diff(char *file_exp, char *file_got, int print)
 				return (close_files(ptr_exp, ptr_got));
 			add_line(&line_lst, line_no);
 		}
-		if (comp[0] == '\n')
+		if (comp[0] == '\n' || comp[1] == '\n')
+		{
+			place_at_line_start(ptr_exp, ptr_got, &comp[0], &comp[1]);
 			line_no++;
+		}
 	}
 	close_files(ptr_exp, ptr_got);
 	if (comp[0] == EOF && comp[1] == EOF && !line_lst)
