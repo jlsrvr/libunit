@@ -30,4 +30,6 @@ int pass_output_test(void *value);
 int diff_test(void *value);
 int diff_display_fail_test(void *value);
 int diff_display_pass_test(void *value);
+int diff_display_single_line_fail_test(void *p);
+int diff_display_single_line_pass_test(void *p);
 #endif

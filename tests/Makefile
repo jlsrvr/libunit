@@ -25,6 +25,8 @@ SRC 		=	runner.c \
 				libunit-output-tests/01_output_test.c \
 				libunit-output-tests/02_diff_test.c \
 				libunit-output-tests/03_diff_display_test.c \
+				libunit-output-tests/04_diff_display_single_line_test.c
+
 
 RM			=	rm -f
 

@@ -12,6 +12,8 @@ int		output_launcher(void)
 	load_test(&testlist, "Diff of two different files", &diff_test, "Fail");
 	load_test(&testlist, "Display the diff between two files", &diff_display_fail_test, NULL);
 	load_test(&testlist, "Display diff of two identical files", &diff_display_pass_test, NULL);
+	load_test(&testlist, "Display the diff between two single lines", &diff_display_single_line_fail_test, NULL);
+	load_test(&testlist, "Display diff of two identical single lines", &diff_display_single_line_pass_test, NULL);
 	return (launch_tests(&testlist, title));
 }
 
