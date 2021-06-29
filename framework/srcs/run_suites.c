@@ -34,10 +34,10 @@ static int	print_result(int total, int passed)
 	if (total == passed)
 	{
 		pass();
-		return (0);
+		return (SUCCESS);
 	}
 	fail();
-	return (1);
+	return (FAILURE);
 }
 
 int	run_suites(t_suite_lst **suites, char *title)

@@ -4,7 +4,7 @@ static int	close_files(FILE *ptr1, FILE *ptr2)
 {
 	fclose(ptr1);
 	fclose(ptr2);
-	return (1);
+	return (FAILURE);
 }
 
 static void	add_line(t_line **line_lst, int line_no)
@@ -38,14 +38,14 @@ static int	open_files(char *file_exp, char *file_got,
 {
 	*ptr_exp = fopen(file_exp, "r");
 	if (!*ptr_exp)
-		return (1);
+		return (FAILURE);
 	*ptr_got = fopen(file_got, "r");
 	if (!*ptr_got)
 	{
 		fclose(*ptr_exp);
-		return (1);
+		return (FAILURE);
 	}
-	return (0);
+	return (SUCCESS);
 }
 
 static void	print_line(int line_no, int *actual_no,
@@ -78,7 +78,7 @@ static int	print_diff(t_line **line_lst, char *file_exp, char *file_got, int pri
 	int		actual_line[2];
 
 	if (!print || open_files(file_exp, file_got, &ptr_exp, &ptr_got))
-		return (1);
+		return (FAILURE);
 	temp = *line_lst;
 	printf("\nDiff exp-%s got-%s\n", file_exp, file_got);
 	printf("--- exp-%s\n+++ got-%s\n", file_exp, file_got);
@@ -94,7 +94,7 @@ static int	print_diff(t_line **line_lst, char *file_exp, char *file_got, int pri
 		free(prev);
 	}
 	close_files(ptr_exp, ptr_got);
-	return (1);
+	return (FAILURE);
 }
 
 int	file_diff(char *file_exp, char *file_got, int print)
@@ -122,6 +122,6 @@ int	file_diff(char *file_exp, char *file_got, int print)
 	}
 	close_files(ptr_exp, ptr_got);
 	if (comp[0] == EOF && comp[1] == EOF && !line_lst)
-		return (0);
+		return (SUCCESS);
 	return (print_diff(&line_lst, file_exp, file_got, print));
 }

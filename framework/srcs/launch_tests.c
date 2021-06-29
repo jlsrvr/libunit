@@ -55,7 +55,7 @@ int	launch_tests(t_unit_lst **lst, char *title)
 			DISPLAY_SIZE, test_elem->describe);
 		fflush(stdout);
 		ret = exec_test(test_elem);
-		if (ret == 0)
+		if (ret == SUCCESS)
 			passed++;
 		print_result(ret);
 		test_elem = test_elem->next;
