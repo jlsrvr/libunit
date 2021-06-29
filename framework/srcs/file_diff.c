@@ -111,14 +111,14 @@ int	file_diff(char *file_exp, char *file_got, int print)
 	{
 		comp[0] = fgetc(ptr_exp);
 		comp[1] = fgetc(ptr_got);
-		if (comp[0] == '\n')
-			line_no++;
 		if (comp[0] != comp[1])
 		{
 			if (!print)
 				return (close_files(ptr_exp, ptr_got));
 			add_line(&line_lst, line_no);
 		}
+		if (comp[0] == '\n')
+			line_no++;
 	}
 	close_files(ptr_exp, ptr_got);
 	if (comp[0] == EOF && comp[1] == EOF && !line_lst)
