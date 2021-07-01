@@ -1,6 +1,12 @@
 NAME		=	libunit_tests
 
-CC			=	clang
+ifeq ($(shell uname),Darwin)
+	CC		=	gcc
+	SED 	= 	@sed -i '' -E 's/^\.\///' .gitignore
+else
+	CC		=	clang
+	SED 	= 	@sed -i -E 's/^\.\///' .gitignore
+endif
 
 IDIR		=	-I./headers -I./../framework/headers
 
@@ -32,12 +38,6 @@ RM			=	rm -f
 
 FLAGS		=	-Wall -Wextra -Werror
 
-ifeq ($(shell uname),Darwin)
-	SED = @sed -i '' -E 's/^\.\///' .gitignore
-else
-	SED = @sed -i -E 's/^\.\///' .gitignore
-endif
-
 .c.o:
 	$(CC) $(FLAGS) $(IDIR) -c $< -o $(<:.c=.o)
 
@@ -53,9 +53,6 @@ $(NAME):	make_lib_unit $(OBJS)
 			@find . -type f -name "*.a" >> .gitignore
 			@$(SED)
 
-make_lib:
-	@make libft.a -C ./libft/
-
 make_lib_unit:
 	@make -C ./../framework/
 
@@ -69,4 +66,4 @@ fclean: 	clean
 
 re:			fclean all
 
-.PHONY:	all clean fclean re make_lib_unit make_lib
+.PHONY:	all clean fclean re make_lib_unit
