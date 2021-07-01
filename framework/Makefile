@@ -1,6 +1,12 @@
 NAME			=	libunit.a
 
-CC				=	clang
+ifeq ($(shell uname),Darwin)
+	CC		=	gcc
+	SED 	= 	@sed -i '' -E 's/^\.\///' .gitignore
+else
+	CC		=	clang
+	SED 	= 	@sed -i -E 's/^\.\///' .gitignore
+endif
 
 OBJS			=	$(SRCS:.c=.o)
 
@@ -19,12 +25,6 @@ SRCS			= 	srcs/load_test.c \
 RM				=	rm -f
 
 FLAGS			=	-Wall -Wextra -Werror
-
-ifeq ($(shell uname),Darwin)
-	SED = @sed -i '' -E 's/^\.\///' .gitignore
-else
-	SED = @sed -i -E 's/^\.\///' .gitignore
-endif
 
 .c.o:
 	$(CC) $(FLAGS) -I$(IDIR) -c $< -o $(<:.c=.o)
