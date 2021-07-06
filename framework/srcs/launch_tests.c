@@ -3,6 +3,8 @@
 static int	exec_test(t_unit_lst *test)
 {
 	int		status;
+	int     (*test_to_execute)(void*);
+	void	*test_params;
 	pid_t	pid;
 
 	pid = fork();
@@ -11,8 +13,10 @@ static int	exec_test(t_unit_lst *test)
 	status = 0;
 	if (pid == 0)
 	{
+		test_to_execute = test->test;
+		test_params = test->params;
 		alarm(TIME_LIMIT);
-		exit(test->test(test->params));
+		exit(test_to_execute(test_params));
 	}
 	wait(&status);
 	if (WIFEXITED(status))
