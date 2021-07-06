@@ -57,5 +57,6 @@ int	run_suites(t_suite_lst **suites, char *title)
 			pass_count++;
 		temp = temp->next;
 	}
+	clean_suites(suites);
 	return (print_result(suite_count, pass_count));
 }
