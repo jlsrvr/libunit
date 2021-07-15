@@ -132,7 +132,10 @@ int	file_diff(char *file_exp, char *file_got, int print)
 	int		line_no = 1;
 
 	if (open_files(file_exp, file_got, &ptr_exp, &ptr_got))
+	{
+		printf(RED"ERROR: "RESET"At least one of the files doesn't open\n");
 		return (1);
+	}
 	while (comp[0] != EOF && comp[1] != EOF)
 	{
 		comp[0] = fgetc(ptr_exp);
